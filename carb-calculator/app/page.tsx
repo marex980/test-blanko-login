@@ -1,17 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { Calculator } from "@/components/calculator";
 import { db } from "@/lib/db";
 
 export default function Home() {
-  const [meals, setMeals] = useState(db.meals.list());
-
-  // Refresh meals list when component mounts
-  useEffect(() => {
-    setMeals(db.meals.list());
-  }, []);
-
   return (
     <main className="container mx-auto px-4 py-8">
       <div className="mx-auto max-w-2xl space-y-8">
@@ -22,7 +14,7 @@ export default function Home() {
           </p>
         </div>
 
-        <Calculator meals={meals} />
+        <Calculator initialMeals={db.meals.list()} />
       </div>
     </main>
   );

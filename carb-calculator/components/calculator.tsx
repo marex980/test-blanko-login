@@ -14,8 +14,9 @@ type SelectedMeal = {
   carbs: number;
 };
 
-export function Calculator({ meals }: { meals: Meal[] }) {
+export function Calculator({ initialMeals }: { initialMeals: Meal[] }) {
   const [selectedMeals, setSelectedMeals] = useState<SelectedMeal[]>([]);
+  const [meals] = useState(initialMeals);
 
   // Sort meals alphabetically by name
   const sortedMeals = [...meals].sort((a, b) => a.name.localeCompare(b.name));
